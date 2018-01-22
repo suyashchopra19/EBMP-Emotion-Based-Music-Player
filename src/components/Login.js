@@ -87,10 +87,7 @@ class Login extends Component {
       //     <nav className="navbar ">
       //       <div className="navbar-brand">
       //         <NavLink className="navbar-item" to="/">
-      //           <img
-      //             src={require('../images/Soundize-logo2.png')}
-      //             alt="soundize"
-      //           />
+      //           
       //         </NavLink>
 
       //         <a
@@ -125,7 +122,7 @@ class Login extends Component {
       //             className="scroll-down"
       //             id="mini-info"
       //           >
-      //             Learn about Soundize
+      //  
       //           </a>
       //         </p>
       //         <br />
@@ -138,12 +135,9 @@ class Login extends Component {
       //     <section className="banner-two">
       //       <img src={require('../images/devices.png')} alt="devices" />
       //       <div className="banner-two-info">
-      //         <h1 id="slide-one">What's on Soundize?</h1>
+      //       
       //         <h2 id="slide-two">Music</h2>
-      //         <p id="slide-two">
-      //           There are millions of songs on Soundize. Play your favorites,
-      //           discover new tracks, and build the perfect collection.
-      //         </p>
+      //        
       //         <h2 id="slide-three">Playlists</h2>
       //         <p id="slide-three">
       //           You’ll find readymade playlists to match your mood, put together
@@ -169,14 +163,14 @@ class Login extends Component {
       //             className="banner-button"
       //             href="#"
       //           >
-      //             GET SOUNDIZE FREE
+      //             
       //           </a>
       //           <a
       //             onClick={() => this.login()}
       //             className="banner-button"
       //             href="#"
       //           >
-      //             GET SOUNDIZE PREMIUM
+      //     
       //           </a>
       //         </p>
       //       </div>
@@ -230,7 +224,7 @@ class Login extends Component {
       //             aria-hidden="true"
       //           />
       //         </span>
-      //         <h2>Copyright - 2017 Soundize</h2>
+      //       
       //       </div>
       //     </footer>
       //   </div>

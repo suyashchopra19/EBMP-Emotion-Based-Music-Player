@@ -621,7 +621,7 @@ function getEmotion(faces) {
 
 /* takes the greatest emotion shown on the user's face and finds a genre */
 export function processEmotion() {
-  console.log("!!processEmotion(maxEmotion)!!", (maxEmotion = "joy"));
+  console.log("!!processEmotion(maxEmotion)!!", (maxEmotion));
   if (maxEmotion) {
     var genre;
 
@@ -653,6 +653,7 @@ export function processEmotion() {
     // getSearchedPlaylistsCall(genre);
     trackLookup(genre);
   } else {
+    genre = "pop"
     // document.getElementById("songs").innerHTML =
     //   "<span> Please show an emotion to the webcam. </span><br/>";
   }

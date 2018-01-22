@@ -27,21 +27,21 @@ import affectiva, {
   setupAffectiva,
   stopAffectiva
 } from "../affectiva/affectiva.js";
-import {trackLookup} from '../actions/spotifyApi_actions';
+import { trackLookup } from "../actions/spotifyApi_actions";
 
 class Home extends Component {
   constructor(props) {
     super(props);
   }
   state = {
-    button:false,
+    button: false,
     // startButton:false,
     modalClassName: "modal create-playlist-modal",
     playlistClassName: "column playlists-menu",
-    renderEBMP:false,
+    renderEBMP: false
   };
   componentDidMount() {
-    console.log('tokens',localStorage.getItem("token"));
+    console.log("tokens", localStorage.getItem("token"));
     console.log("cdm", this.props);
     this.getAllPlaylists(this.props);
     window.scroll(0, 0);
@@ -93,20 +93,24 @@ class Home extends Component {
 
   render() {
     console.log("props", this.props);
-    return <div>
+    return (
+      <div>
         <div className="columns">
           <div className={this.state.playlistClassName}>
             <Playlists onOpenCreatePlaylistModal={this.openModal} />
           </div>
           <div className="column is-6 tracklist">
-            {this.state.renderEBMP? 
-              (
+            {this.state.renderEBMP ? (
+              <div>
                 <div>
-                  <div id="songs"></div>
-                  <div id="song-display"></div>
+                  <div id="songs" />
+                  <div id="song-display" />
                 </div>
-              )
-            : this.renderTracklist()}
+                <div />
+              </div>
+            ) : (
+              this.renderTracklist()
+            )}
           </div>
           <div className="column extra-infolist">
             <script src="https://download.affectiva.com/js/3.2/affdex.js" />
@@ -117,29 +121,47 @@ class Home extends Component {
                     Please login with Spotify
                   </h2>
                   <div id="profile" className="running center">
-                    <button disabled={this.state.button} className="ui button" id="start" onClick={() => {
-                        Promise.all([setupAffectiva(), startAffectiva()], this.setState(
-                            { button: !(this.state.startButton) }
-                          ),
-                        this.setState({ renderEBMP: true }))
-                      }}>
+                    <button
+                      disabled={this.state.button}
+                      className="ui button"
+                      id="start"
+                      onClick={() => {
+                        Promise.all(
+                          [setupAffectiva(), startAffectiva()],
+                          this.setState({ button: !this.state.startButton }),
+                          this.setState({ renderEBMP: true })
+                        );
+                      }}
+                    >
                       Start Affectiva
                     </button>
 
-                    <button disabled={!this.state.button} className="ui button" id="stop" onClick={() => {
-                       stopAffectiva()
-                       this.setState({ button: (this.state.stopButton) })
-                       this.setState({ renderEBMP: false });
-                      }}>
+                    <button
+                      disabled={!this.state.button}
+                      className="ui button"
+                      id="stop"
+                      onClick={() => {
+                        stopAffectiva();
+                        this.setState({ button: this.state.stopButton });
+                        this.setState({ renderEBMP: false });
+                      }}
+                    >
                       Stop Affectiva
                     </button>
 
-                    <button className="ui button" id="active" onClick={() => processEmotion()}>
+                    <button
+                      className="ui button"
+                      id="active"
+                      onClick={() => processEmotion()}
+                    >
                       Get a song!
                     </button>
 
                     <div className="column running">
-                      <div id="affdex_elements" styles={{ width: "200px", height: "150 px" }} />
+                      <div
+                        id="affdex_elements"
+                        styles={{ width: "200px", height: "150 px" }}
+                      />
                       <div className="running" styles={{ height: "5em" }}>
                         <h4>Emotion Tracking Results</h4>
                         <div id="results" />
@@ -158,12 +180,30 @@ class Home extends Component {
           <script src="../affectiva/affectiva.js" />
         </div>
         <div className={this.state.modalClassName}>
-          <CreateNewPlaylistModal createPlaylist={(name, desc) => this.createPlaylist(name, desc)} closeModal={this.closeModal} />
+          <CreateNewPlaylistModal
+            createPlaylist={(name, desc) => this.createPlaylist(name, desc)}
+            closeModal={this.closeModal}
+          />
         </div>
-        <div onClick={() => this.togglePlaylist()} style={{ position: "fixed", top: "15px", left: "15px", zIndex: 999, color: "#bdbdbd" }} className="burger-menu-playlist">
-          <i style={{ fontSize: "1.5rem" }} className="fa fa-tasks" aria-hidden="true" />
+        <div
+          onClick={() => this.togglePlaylist()}
+          style={{
+            position: "fixed",
+            top: "15px",
+            left: "15px",
+            zIndex: 999,
+            color: "#bdbdbd"
+          }}
+          className="burger-menu-playlist"
+        >
+          <i
+            style={{ fontSize: "1.5rem" }}
+            className="fa fa-tasks"
+            aria-hidden="true"
+          />
         </div>
-      </div>;
+      </div>
+    );
   }
 }
 
