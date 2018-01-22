@@ -651,15 +651,15 @@ export function processEmotion() {
     }
     // trackLookup(genre, maxEmotion); // need to add the functionality to add song
     // getSearchedPlaylistsCall(genre);
-    trackLookup(genre);
+    trackLookup(genre, maxEmotion);
   } else {
-    genre = "pop"
+    trackLookup(pop, 'Unable to Identify the Emotion');
     // document.getElementById("songs").innerHTML =
     //   "<span> Please show an emotion to the webcam. </span><br/>";
   }
 }
 
-const trackLookup = async genre => {
+const trackLookup = async (genre, emotion) => {
   console.log("HOme here");
   if (localStorage.getItem("token")) {
     $.ajax({
@@ -683,7 +683,8 @@ const trackLookup = async genre => {
             );
             var track = response.tracks.items[randomIndex];
             $("#songs").html(
-              "<span> Based on your emotion of , we recommend: <br/><h3>" +
+              "<h1>According to us your currently feeling: </h1>"+ emotion
+              +"<br><span> Based on your emotion of , we recommend: <br/><h3>" +
                 track.name +
                 " by " +
                 track.artists[0].name +
@@ -706,8 +707,13 @@ const trackLookup = async genre => {
 
 function displaySong(uri) {
   $("#song-display").html(
+
     '<iframe src="https://open.spotify.com/embed?uri=' +
-      uri +
+      uri +'?rel=0&amp;autoplay=1'+
       '" frameborder="0" allowtransparency="true"></iframe>'
+    
+    // '<iframe src="https://open.spotify.com/embed?uri=' +
+    //   uri +
+    //   '" frameborder="0" allowtransparency="true"></iframe>'
   );
 }

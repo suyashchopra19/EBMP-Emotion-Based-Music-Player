@@ -58,7 +58,7 @@ class Nav extends Component {
             to="/login"
             onClick={() => this.onLogout()}
           >
-            EMBP 
+            E.B.M.P
           </NavLink>
         </div>
         <div onClick={() => this.toggleMobileMenu()} className="burge-menu">

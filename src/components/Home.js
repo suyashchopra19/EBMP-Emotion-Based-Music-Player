@@ -103,8 +103,11 @@ class Home extends Component {
             {this.state.renderEBMP ? (
               <div>
                 <div>
-                  <div id="songs" />
-                  <div id="song-display" />
+                  <div className="row">
+                    <div className="col-md-2 col-md-offset-5" />
+                    <div className="" id="songs" />
+                    <div id="song-display" />
+                  </div>
                 </div>
                 <div />
               </div>
@@ -118,7 +121,7 @@ class Home extends Component {
               <div className="ui card">
                 <div id="login" className="content">
                   <h2 className="ui header center" id="header">
-                    Please login with Spotify
+                    Start for Emotion Based Music
                   </h2>
                   <div id="profile" className="running center">
                     <button
